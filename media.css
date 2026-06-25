@@ -1,0 +1,494 @@
+/* Mobile settings for screens under 768px wide */
+@media (max-width: 768px) {
+
+    /* 1. Center the hamburger vertically inside your container */
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    /* 2. Show the hamburger menu icon */
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    /* 3. Hide your sign-up/login container off-screen to the right by default */
+    .navbar-buttons {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden off-screen */
+        width: 70%;
+        /* Takes up a portion of the screen */
+        height: 100vh;
+        background-color: #262626;
+        /* Matches your dark background */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        background-color: rgba(38, 38, 38, 0.85);
+        /* Make it semi-transparent */
+        backdrop-filter: blur(10px);
+        /* Blurs out the website content behind it */
+        -webkit-backdrop-filter: blur(10px);
+        /* Safari support */
+    }
+
+    /* 4. This is the magic rule: when .is-open is added, slide the panel in */
+    .navbar-buttons.is-open {
+        right: 0 !important;
+    }
+
+    /* Optional: Animate hamburger lines into an 'X' icon when active */
+    .menu-toggle.is-open .toggle-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open .toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-open .toggle-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Initial state: hidden and pushed down slightly */
+    .navbar-signup,
+    .navbar-login-frame {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Active state: Fade in and slide up when menu opens */
+    .navbar-buttons.is-open .navbar-signup {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
+        /* Starts slightly after menu opens */
+    }
+
+    .navbar-buttons.is-open .navbar-login-frame {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.3s;
+        /* Starts right after Sign Up */
+    }
+}
+
+@media (max-width: 1150px) {
+    .header-container {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        padding: 60px 40px;
+        /* Reduces massive desktop margins */
+    }
+
+    .header-group {
+        flex-direction: column;
+        /* Stacks the text block directly on top of the image */
+        text-align: center;
+        gap: 50px;
+    }
+
+    .header-left-branch {
+        align-items: center;
+        /* Centers text items and the CTA button on tablets */
+        max-width: 100%;
+        gap: 40px;
+        /* Drops down the massive 72px desktop gap slightly for tighter screens */
+    }
+
+    .header-left-text {
+        align-items: center;
+    }
+
+    .header-title-box,
+    .header-subtitle-box {
+        max-width: 100%;
+    }
+
+    .header-title {
+        font-size: 46px;
+        /* Shrinks font down so words fit safely without clipping */
+    }
+}
+
+/* 2. Smartphones */
+@media (max-width: 480px) {
+    .header-container {
+        padding: 30px 20px;
+        /* Tightens padding to maximize readable space on handsets */
+    }
+
+    .header-title {
+        font-size: 32px;
+        /* Clean standard size for mobile headings */
+    }
+
+    .header-right-background {
+        height: 300px;
+        /* Reduces image height so it doesn't take over the entire screen view */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-illustration {
+        animation: none !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 0px 0px;
+    }
+
+    .logo-top-line,.logo-bottom-line {
+        width: calc(100% - 40px);
+    }
+
+    .logo-image {
+        width: 650px;
+        height: auto;
+        margin-right: 60px;
+        animation: seamlessMobileScrollRight 12s linear infinite;
+    }
+}
+
+@keyframes seamlessMobileScrollRight {
+    0% {
+        transform: translateX(-710px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   THE HEIGHT CONSTRAINTS FIX (Tablets & Phones)
+   ========================================================================== */
+@media (max-width: 1150px) {
+    .product-container {
+        /* FIX: Change height to auto and limit the max-height so it doesn't stay stretched */
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: 550px !important;
+        padding: 40px 40px !important;
+        /* This padding dictates the exact spacing around the box */
+    }
+
+    .product-background {
+        width: 100% !important;
+        height: 42vw !important;
+        /* Scales height dynamically based on screen width */
+        max-height: 380px !important;
+        border-radius: 16px;
+        background: #FDF5DF;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .product-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center top;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        max-height: 350px !important;
+        padding: 30px 20px !important;
+        /* Reduces vertical spacing to a tight mobile rhythm */
+    }
+
+    .product-background {
+        height: 50vw !important;
+        /* Gives perfect smartphone proportions */
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .features-container {
+        padding: 40px 40px;
+        /* Brings padding in gracefully on tablets */
+    }
+
+    .features-group {
+        gap: 30px;
+        /* Tighter card gaps for mid-size screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .features-container {
+        padding: 50px 20px;
+        /* Safe mobile side gutters */
+    }
+
+    .features-group {
+        flex-direction: column;
+        /* THE CRITICAL FIX: Stacks columns vertically on mobile phones */
+        align-items: center;
+        gap: 50px;
+        /* Re-adds breathing room between the stacked blocks */
+    }
+
+    .feature1,
+    .feature2,
+    .feature3 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .feedback-container {
+        padding: 10px 40px;
+        /* Pulls global section borders cleaner onto tablets */
+    }
+
+    .feedback-group {
+        padding: 50px 50px;
+        /* Shaves off massive desktop side padding */
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback-container {
+            padding: 20px 40px;
+        }
+
+    .feedback-group {
+        padding: 40px 24px;
+        gap: 35px;
+        /* Slightly widened gap for a more balanced layout */
+
+        /* 1. FORCE internal content blocks to center globally */
+        align-items: center;
+    }
+
+    .feedback-top-text {
+        font-size: 18px;
+        line-height: 30px;
+
+        /* 2. Center-align the quote text so it looks cohesive with the avatar */
+        text-align: center;
+    }
+
+    .feedback-bottom {
+        flex-direction: column;
+        gap: 15px;
+
+        /* 3. Center the row layout itself and its inner columns */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feedback-info {
+        /* 4. Center-align the name string and star icons column */
+        align-items: center;
+    }
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES (Adaptive Grid Responsiveness)
+   ========================================================================== */
+@media (max-width: 1150px) {
+    .cta-container {
+        padding: 60px 40px;
+        min-height: auto;
+    }
+
+    .cta-group {
+        gap: 40px;
+    }
+
+    .cta-title {
+        font-size: 46px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-container {
+        padding: 50px 24px;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        align-items: center;
+        /* FIX: Centers the text branch and image branch horizontally */
+        gap: 50px;
+    }
+
+    .cta-left-branch {
+        max-width: 100%;
+        align-items: center;
+        /* FIX: Centers the text wrapper and the yellow button */
+    }
+
+    .cta-left-text {
+        align-items: center;
+        /* FIX: Centers the title box and subtitle box together */
+        gap: 20px;
+    }
+
+    .cta-title {
+        font-size: 36px;
+        text-align: center;
+        /* FIX: Centers the heading string characters */
+    }
+
+    .cta-subtitle {
+        text-align: center;
+        /* FIX: Centers the paragraph paragraph characters */
+    }
+
+    .cta-subtitle br {
+        display: none;
+        /* Allows text to break naturally based on phone width */
+    }
+
+    .cta-right-branch {
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+        /* Ensures the teal wallet wrapper stays perfectly centered */
+    }
+}
+
+
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE FOOTER MODIFICATIONS
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+    .footer-container {
+        height: auto;
+        /* Overrides any strict desktop layout heights */
+        padding: 40px 24px;
+        /* Generates a safe, cozy touch-boundary margin */
+        gap: 40px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        gap: 48px;
+    }
+
+    .footer-group {
+        align-items: center;
+        /* Centers the brand logo and base links */
+        gap: 24px;
+    }
+
+    .footer-group-top {
+        justify-content: center;
+    }
+
+    .footer-group-bottom {
+        flex-direction: column;
+        /* Vertically stacks individual policy link items */
+        gap: 16px;
+    }
+
+    .footer-email {
+        width: 100%;
+        max-width: 450px;
+        /* Locks form container layout size cleanly */
+        align-items: center;
+    }
+
+    .footer-newsletter-form {
+        flex-direction: column;
+        /* Vertically drops the send button under the text field input */
+        width: 100%;
+        gap: 16px;
+    }
+
+    .footer-email-textframe {
+        width: 100%;
+        /* Lets the input frame stretch beautifully relative to its wrapper boundaries */
+        padding: 0 20px;
+        /* Balances the structural internal spacing */
+    }
+
+    .footer-email-ctaframe {
+        width: 100%;
+        /* Stretches button full-width on mobile for easy finger-touch activation */
+    }
+}
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .navbar-container {
+        position: fixed;
+        /* Forces it to stay fixed on tablets */
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1280px;
+        z-index: 1000;
+        padding: 0 30px;
+        /* Tightens side padding for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        position: fixed;
+        /* Forces it to stay fixed on mobile */
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1280px;
+        z-index: 1000;
+
+        height: 80px;
+        /* Slimmer navbar for mobile screens */
+        padding: 0 20px;
+        background: rgba(43, 43, 43, 0.85);
+        /* Slightly darker for readability on mobile */
+    }
+
+    .header-container {
+        margin-top: 80px;
+        /* Aligns perfectly with the 80px mobile navbar */
+        padding: 40px 20px;
+        /* Prevents content from getting clipped */
+    }
+}
+
